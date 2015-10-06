@@ -116,72 +116,30 @@
      }   
 
    });
-  $('#rating-container').delegate('.rating-circle', 'mouseleave', function() {  
-         //Recognize mouseover, turn hovered Yellow and ones to left
-     $('.rating-circle').mouseover(function () {
+  //Recognize mouseover, turn hovered Yellow and ones to left
+  $('#rating-container').delegate('.rating-circle', 'mouseenter', function() {
         $(this).addClass('rating-hover');
         $(this).prevAll().addClass('rating-hover');
        //Remove Green temporarily
        $('.rating-circle').removeClass('rating-chosen');
 });
-     //Remove ONLY Yellow when not hover
-     $('.rating-circle').mouseout(function() {
+  //Remove ONLY Yellow when not hover
+  $('#rating-container').delegate('.rating-circle', 'mouseleave', function() {
         $('.rating-circle').removeClass('rating-hover');
        //turn Green the previously clicked and left circles
        $('#chosen').addClass('rating-chosen');
        $('#chosen').prevAll().addClass('rating-chosen');
        
 });
-     //turn chosen Green when clicked, also circles to left
-     $('.rating-circle').click(function () {
+  //turn chosen Green when clicked, also circles to left
+  $('#rating-container').delegate('.rating-circle', 'click', function() {
         $(this).addClass('rating-chosen');
         $(this).prevAll().addClass('rating-chosen');
        //undo previous choices
        $('.rating-circle').removeAttr('id');
        //store the chosen value
        $(this).attr('id', 'chosen');
-});
-   }); 
-   
- });
- </script>
-</body>
-</html>
-     $('#rating-container').empty();
-     //Add circles equal to max value
-     for(var idx=0; idx<MV; idx++){
-     $('#rating-container').append('<div class="rating-circle"></div>');
-     }   
-     $('.rating-circle').trigger('mouseover');
-
-   });
-  $('#rating-container').delegate('.rating-circle', 'click', function() {  
-         //Recognize mousehover, turn hovered Yellow and ones to left
-     $('.rating-circle').mouseover(function () {
-        $(this).addClass('rating-hover');
-        $(this).prevAll().addClass('rating-hover');
-       //Remove Green temporarily
-       $('.rating-circle').removeClass('rating-chosen');
-});
-     //Remove ONLY Yellow when not hover
-     $('.rating-circle').mouseout(function() {
-        $('.rating-circle').removeClass('rating-hover');
-       //turn Green the previously clicked and left circles
-       $('#chosen').addClass('rating-chosen');
-       $('#chosen').prevAll().addClass('rating-chosen');
-       
-});
-     //turn chosen Green when clicked, also circles to left
-     $('.rating-circle').click(function () {
-        $(this).addClass('rating-chosen');
-        $(this).prevAll().addClass('rating-chosen');
-       //undo previous choices
-       $('.rating-circle').removeAttr('id');
-       //store the chosen value
-       $(this).attr('id', 'chosen');
-});
-   }); 
-   
+     }); 
  });
  </script>
 </body>
